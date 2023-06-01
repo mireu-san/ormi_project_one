@@ -90,13 +90,21 @@ const printAnswer = async (answer) => {
   $chatList.appendChild(li);
 };
 
-// 사람에 의해 지정된 답변. (인공지능 무시, 요청 없음.)
-// json 으로 분리하기.
-const humanAnsDict = {
-  벤티: "벤티는 원신의 바르바토스 입니다.",
-};
+// 사람에 의해 지정된 답변. (no post request to api)
+// json 으로 분리
+let humanAnsDict;
 
-// api 요청보내는 함수
+axios
+  .get("./humanAnsDict.json")
+  .then(function (res) {
+    humanAnsDict = res.data;
+  })
+  .catch(function (err) {
+    console.log(err);
+  });
+
+// humanAnsDict 에 매치되는게 아닐 시,
+// openAI 측 api로 요청보내는 함수
 const apiPost = async () => {
   const reservedAnswer = humanAnsDict[question];
 
