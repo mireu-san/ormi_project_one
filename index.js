@@ -18,8 +18,7 @@ let question;
 let data = [
   {
     role: "system",
-    content:
-      "assistant는 안내원입니다. 대화의 마지막 끝부분 마다 '냥' 을 붙이세요.",
+    content: "assistant는 라이트노벨 안내원입니다.",
   },
 ];
 
@@ -54,16 +53,17 @@ data.push(
 // 화면에 뿌려줄 데이터, 질문들
 let questionData = [];
 
-// input에 입력된 질문 받아오는 함수 => 삭제.
-// $input.addEventListener("input", (e) => {
-//   question = e.target.value;
-// });
+// input에 입력된 질문 받아오는 함수
+$input.addEventListener("input", (e) => {
+  question = e.target.value;
+});
 
 // 사용자의 질문을 객체를 만들어서 push
 const sendQuestion = (question) => {
   if (question) {
     data.push({
-      role: "system",
+      // role: "system",
+      role: "user",
       content: question,
     });
     questionData.push({
@@ -127,6 +127,7 @@ const apiPost = async () => {
     });
     try {
       console.log("apiPost에서 result.data :", result.data);
+      // an order of openAI's priority answer option, small #no. means top rated.
       printAnswer(result.data.choices[0].message.content);
     } catch (err) {
       console.log("apiPost 에서 문제 발생. 확인해주세요.", err);
