@@ -92,13 +92,13 @@ const printAnswer = async (answer) => {
 
 // 사람에 의해 지정된 답변. (인공지능 무시, 요청 없음.)
 // json 으로 분리하기.
-const humanAnswerDict = {
+const humanAnsDict = {
   벤티: "벤티는 원신의 바르바토스 입니다.",
 };
 
 // api 요청보내는 함수
 const apiPost = async () => {
-  const reservedAnswer = humanAnswerDict[question];
+  const reservedAnswer = humanAnsDict[question];
 
   if (reservedAnswer) {
     printAnswer(reservedAnswer);
