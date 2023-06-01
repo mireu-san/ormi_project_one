@@ -1,5 +1,7 @@
 # 작업중입니다 :)
 
+## Prerequisite
+1. npm install -D tailwindcss
 
 ##  Known status.
 - To run this repository, run live server extension in vscode.
