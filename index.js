@@ -53,7 +53,7 @@ data.push(
 // 화면에 뿌려줄 데이터, 질문들
 let questionData = [];
 
-// input에 입력된 질문 받아오는 함수
+// input에 입력된 질문 받아오는 함수 -> 질문글 표시.
 $input.addEventListener("input", (e) => {
   question = e.target.value;
 });
