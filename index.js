@@ -1,5 +1,5 @@
 const $form = document.querySelector("form");
-const $input = document.querySelector("input");
+// const $input = document.querySelector("input");
 let input1 = document.getElementById("input1");
 let input2 = document.getElementById("input2");
 let input3 = document.getElementById("input3");
@@ -18,7 +18,8 @@ let question;
 let data = [
   {
     role: "system",
-    content: "assistant는 라이트노벨 안내원입니다.",
+    content:
+      "assistant는 라이트노벨 안내원입니다. 라이트노벨에 한정되지 않고, 모든 서브컬쳐류 작품, 미디어를 알려줄 수 있지만, 실사 드라마 영화는 제외합니다. 주어지는 질문은 크게 3가지이며 다음과 같습니다. 첫째. 좋아하는 장르 둘째. 최근에 읽은 라이트 노벨 또는 만화 제목. 셋째. 이야기의 분위기는 어떤 편이 좋은지?",
   },
 ];
 
@@ -36,40 +37,35 @@ data.push(
   }
 );
 
-// fetch(url, {
-//   method: "POST",
-//   headers: {
-//     "Content-Type": "application/json",
-//   },
-//   body: JSON.stringify(data2),
-//   redirect: "follow",
-// })
-//   .then((res) => res.json())
-//   .then((res) => {
-//     console.log(res);
-//     console.log(res.choices[0].message.content);
-//   });
-
 // 화면에 뿌려줄 데이터, 질문들
 let questionData = [];
 
 // input에 입력된 질문 받아오는 함수 -> 질문글 표시.
-$input.addEventListener("input", (e) => {
-  question = e.target.value;
+// $input.addEventListener("input", (e) => {
+//   question = e.target.value;
+// });
+
+input1.addEventListener("input", (e) => {
+  question = `${input1.value} ${input2.value} ${input3.value}`;
 });
 
-// 사용자의 질문을 객체를 만들어서 push
-const sendQuestion = (questions) => {
-  if (questions) {
-    questions.forEach((question) => {
-      data.push({
-        role: "user",
-        content: question,
-      });
-      questionData.push({
-        role: "user",
-        content: question,
-      });
+input2.addEventListener("input", (e) => {
+  question = `${input1.value} ${input2.value} ${input3.value}`;
+});
+
+input3.addEventListener("input", (e) => {
+  question = `${input1.value} ${input2.value} ${input3.value}`;
+});
+
+const sendQuestion = (question) => {
+  if (question) {
+    data.push({
+      role: "user",
+      content: question,
+    });
+    questionData.push({
+      role: "user",
+      content: question,
     });
   }
 };
@@ -90,10 +86,31 @@ const printQuestion = async () => {
 
 // 화면에 답변 그려주는 함수
 const printAnswer = async (answer) => {
+  // chatgpt 답변 frontend 쪽에 표시
   let li = document.createElement("li");
   li.classList.add("answer");
   li.innerText = answer;
   $chatList.appendChild(li);
+
+  // 클립보트로 복사 버튼
+  let copyButton = document.createElement("button");
+  // style 을 위한 클래스 부여
+  copyButton.classList.add("copyButton");
+  copyButton.innerText = "이 답변 내용을 복사합니다.";
+  copyButton.addEventListener("click", () => {
+    // 클립보드에 진짜로 해당 답변을 복사
+    navigator.clipboard
+      .writeText(answer)
+      .then(() => {
+        console.log(
+          "printAnswer -> copyButton, navigator : 클립보드 복사 성공"
+        );
+      })
+      .catch((err) => {
+        console.log("뭔가 잘못되었습니다. printAnswer -> copyButton", err);
+      });
+  });
+  $chatList.appendChild(copyButton);
 };
 
 // 사람에 의해 지정된 답변. (no post request to api)
@@ -140,16 +157,14 @@ const apiPost = async () => {
 $form.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  // let combinedQuestion = `${input1.value} ${input2.value} ${input3.value}`;
-  let questionsArray = [input1.value, input2.value, input3.value];
+  let combinedQuestion = `${input1.value} ${input2.value} ${input3.value}`;
   input1.value = null;
   input2.value = null;
   input3.value = null;
-
   // $input.value = null;
   // sendQuestion(question);
-  sendQuestion(questionsArray);
-  // sendQuestion(combinedQuestion);
+  // sendQuestion(questionsArray);
+  sendQuestion(combinedQuestion);
   apiPost();
   printQuestion();
 });
