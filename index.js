@@ -25,14 +25,14 @@ let data = [
 data.push(
   {
     role: "user",
-    content: "",
+    content: "다음의 조건에 맞는 비슷한 라이트노벨을 추천해 줘.",
     // content: "게임 원신에 대해 알려줘.",
   },
   {
     role: "assistant",
     content:
       // "게임 원신은 원래 미호요 였으나, 최근 호요버스로 사명을 개명했습니다.",
-      "",
+      "당신이 말해준 조건에 맞는 라이트 노벨은 다음과 같습니다.",
   }
 );
 
@@ -59,16 +59,17 @@ $input.addEventListener("input", (e) => {
 });
 
 // 사용자의 질문을 객체를 만들어서 push
-const sendQuestion = (question) => {
-  if (question) {
-    data.push({
-      // role: "system",
-      role: "user",
-      content: question,
-    });
-    questionData.push({
-      role: "user",
-      content: question,
+const sendQuestion = (questions) => {
+  if (questions) {
+    questions.forEach((question) => {
+      data.push({
+        role: "user",
+        content: question,
+      });
+      questionData.push({
+        role: "user",
+        content: question,
+      });
     });
   }
 };
@@ -139,15 +140,16 @@ const apiPost = async () => {
 $form.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  let combinedQuestion = `${input1.value} ${input2.value} ${input3.value}`;
-
+  // let combinedQuestion = `${input1.value} ${input2.value} ${input3.value}`;
+  let questionsArray = [input1.value, input2.value, input3.value];
   input1.value = null;
   input2.value = null;
   input3.value = null;
 
   // $input.value = null;
   // sendQuestion(question);
-  sendQuestion(combinedQuestion);
+  sendQuestion(questionsArray);
+  // sendQuestion(combinedQuestion);
   apiPost();
   printQuestion();
 });
