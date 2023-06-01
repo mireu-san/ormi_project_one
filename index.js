@@ -1,5 +1,8 @@
 const $form = document.querySelector("form");
 const $input = document.querySelector("input");
+let input1 = document.getElementById("input1");
+let input2 = document.getElementById("input2");
+let input3 = document.getElementById("input3");
 const $chatList = document.querySelector("ul");
 
 // openAI API
@@ -23,12 +26,14 @@ let data = [
 data.push(
   {
     role: "user",
-    content: "게임 원신에 대해 알려줘.",
+    content: "",
+    // content: "게임 원신에 대해 알려줘.",
   },
   {
     role: "assistant",
     content:
-      "게임 원신은 원래 미호요 였으나, 최근 호요버스로 사명을 개명했습니다.",
+      // "게임 원신은 원래 미호요 였으나, 최근 호요버스로 사명을 개명했습니다.",
+      "",
   }
 );
 
@@ -49,10 +54,10 @@ data.push(
 // 화면에 뿌려줄 데이터, 질문들
 let questionData = [];
 
-// input에 입력된 질문 받아오는 함수
-$input.addEventListener("input", (e) => {
-  question = e.target.value;
-});
+// input에 입력된 질문 받아오는 함수 => 삭제.
+// $input.addEventListener("input", (e) => {
+//   question = e.target.value;
+// });
 
 // 사용자의 질문을 객체를 만들어서 push
 const sendQuestion = (question) => {
@@ -132,8 +137,16 @@ const apiPost = async () => {
 // submit - this one works as a submit (전송) button to interact with JS.
 $form.addEventListener("submit", (e) => {
   e.preventDefault();
-  $input.value = null;
-  sendQuestion(question);
+
+  let combinedQuestion = `${input1.value} ${input2.value} ${input3.value}`;
+
+  input1.value = null;
+  input2.value = null;
+  input3.value = null;
+
+  // $input.value = null;
+  // sendQuestion(question);
+  sendQuestion(combinedQuestion);
   apiPost();
   printQuestion();
 });
