@@ -1,7 +1,3 @@
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities; */
-
 /* 전체 UI 영역 */
 body {
   display: flex;
