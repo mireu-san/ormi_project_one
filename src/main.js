@@ -64,9 +64,17 @@ const printQuestion = async () => {
   if (question) {
     let li = document.createElement("li");
     li.classList.add("question");
+
+    let span = document.createElement("span");
+    span.innerText = "다음의 문장을 기반으로 알아보고 있어요: ";
+    li.appendChild(span);
+
     questionData.map((el) => {
-      li.innerText = el.content;
+      let questionText = document.createElement("span");
+      questionText.innerText = el.content;
+      li.appendChild(questionText);
     });
+
     $chatList.appendChild(li);
     questionData = [];
     question = false;
