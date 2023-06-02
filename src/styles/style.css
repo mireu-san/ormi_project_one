@@ -57,6 +57,7 @@ header {
   background-color: #171717;
   padding: 50px;
   width: 100%;
+
 }
 
 footer {
@@ -86,11 +87,13 @@ button.copyButton {
   }
 
 /* URL 파란색선 삭제 */
-a {
+header a {
   text-decoration: none;
   color: inherit;
 }
 
-header {
-  color: white;
+header p {
+  color: #fff;
+  text-align: center;
 }
+
