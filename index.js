@@ -40,21 +40,18 @@ data.push(
 // 화면에 뿌려줄 데이터, 질문들
 let questionData = [];
 
-// input에 입력된 질문 받아오는 함수 -> 질문글 표시.
+// original - input에 입력된 질문 받아오는 함수 -> 질문글 표시.
 // $input.addEventListener("input", (e) => {
 //   question = e.target.value;
 // });
 
-input1.addEventListener("input", (e) => {
-  question = `${input1.value} ${input2.value} ${input3.value}`;
-});
+// input에 입력된 질문 받아오는 함수 -> 질문글 표시.
+let inputs = document.querySelectorAll("#input1, #input2, #input3");
 
-input2.addEventListener("input", (e) => {
-  question = `${input1.value} ${input2.value} ${input3.value}`;
-});
-
-input3.addEventListener("input", (e) => {
-  question = `${input1.value} ${input2.value} ${input3.value}`;
+inputs.forEach((input) => {
+  input.addEventListener("input", (e) => {
+    question = `${input1.value} ${input2.value} ${input3.value}`;
+  });
 });
 
 const sendQuestion = (question) => {
