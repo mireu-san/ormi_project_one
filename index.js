@@ -27,23 +27,15 @@ data.push(
   {
     role: "user",
     content: "다음의 조건에 맞는 비슷한 라이트노벨을 추천해 줘.",
-    // content: "게임 원신에 대해 알려줘.",
   },
   {
     role: "assistant",
-    content:
-      // "게임 원신은 원래 미호요 였으나, 최근 호요버스로 사명을 개명했습니다.",
-      "당신이 말해준 조건에 맞는 라이트 노벨은 다음과 같습니다.",
+    content: "당신이 말해준 조건에 맞는 라이트 노벨은 다음과 같습니다.",
   }
 );
 
 // 화면에 뿌려줄 데이터, 질문들
 let questionData = [];
-
-// original - input에 입력된 질문 받아오는 함수 -> 질문글 표시.
-// $input.addEventListener("input", (e) => {
-//   question = e.target.value;
-// });
 
 // input에 입력된 질문 받아오는 함수 -> 질문글 표시.
 let inputs = document.querySelectorAll("#input1, #input2, #input3");
@@ -161,9 +153,7 @@ $form.addEventListener("submit", (e) => {
   input1.value = null;
   input2.value = null;
   input3.value = null;
-  // $input.value = null;
-  // sendQuestion(question);
-  // sendQuestion(questionsArray);
+
   sendQuestion(combinedQuestion);
   apiPost();
   printQuestion();
