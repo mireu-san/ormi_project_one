@@ -10,10 +10,13 @@ body {
 /* 입력란 */
 input {
   padding: 1px;
-  width: 60%;
+  width: 400px;
+  height: 20px;
 }
 
-
+.wrapperAnswer {
+  max-width: 800px;
+}
 
 /* 전송 버튼 */
 #questionnaire {
@@ -25,7 +28,7 @@ input {
 }
 
 #submitBtn {
-  margin-top: 70px;
+  margin-top: 60px;
   padding: 10px 40px;
   margin-left: 25px;
   height: 100px;
@@ -97,3 +100,7 @@ header p {
   text-align: center;
 }
 
+li.question {
+  color: blue;
+  font-weight: bold;
+}

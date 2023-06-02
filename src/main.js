@@ -134,7 +134,7 @@ const apiPost = async () => {
     });
     try {
       console.log("apiPost에서 result.data :", result.data);
-      // an order of openAI's priority answer option, small #no. means top rated.
+      // an order of openAI's priority answer option, lower number means top rated.
       printAnswer(result.data.choices[0].message.content);
     } catch (err) {
       console.log("apiPost 에서 문제 발생. 확인해주세요.", err);
