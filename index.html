@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- <script src="https://cdn.tailwindcss.com"></script> -->
+		<title>chat</title>
+		<!-- js -->
+		<script src="./src/main.js" defer type="module"></script>
+		<link rel="stylesheet" type="text/css" href="./src/styles/style.css">
+		<!-- axios -->
+		<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	</head>
+	<body>
+		<!-- tailwindcss 작동 시, 필요한 class / 동작 구분용 -->
+		<h1 class="text-3xl font-bold underline">
+			환영합니다!
+		</h1>
+		<p>원하시는 라이트노벨을 찾으시려면 저에게 물어보세요.</p>
+		<form action="post" id="questionnaire">
+			<div class="threeQ">
+				<h3>1. 좋아하는 장르가 뭔지 말해주세요.</h3>
+				<input type="text" id="input1" autofocus title="라노벨 질문 1번" />
+				<h3>2. 최근에 읽은 라이트 노벨의 제목은 뭔가요?</h3>
+				<input type="text" id="input2" autofocus title="라노벨 질문 2번" />
+				<h3>3. 이야기의 분위기는 밝으면 좋겠나요, 어두운 편이 좋나요?</h3>
+				<input type="text" id="input3" autofocus title="라노벨 질문 3번" />
+				<br />
+			</div>
+			<button type="submit" id="submitBtn" disabled>전송!</button>
+			<!-- 질문자의 질문과, chatgpt의 답변이 표시되는 영역 -->
+				<div class="wrapperAnswer">
+					<ul>
+					</ul>
+				</div>
+		</form>
+		<!-- 모듈화 후보 -->
+		<script>
+			const form = document.getElementById('questionnaire');
+			const inputs = form.querySelectorAll('input');
+			const submitBtn = document.getElementById('submitBtn');
+			
+			function checkInputs() {
+				let isValid = true;
+				inputs.forEach(input => {
+					if(input.value.trim() === '') isValid = false;
+				});
+				submitBtn.disabled = !isValid;
+			}
+			
+			inputs.forEach(input => {
+				input.addEventListener('input', checkInputs);
+			});
+			
+			form.addEventListener('submit', (e) => {
+				checkInputs();
+				if(submitBtn.disabled) {
+					e.preventDefault();
+				}
+			});
+		</script>
+
+	</body>
+</html>
