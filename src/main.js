@@ -146,13 +146,12 @@ const apiPost = async () => {
 $form.addEventListener("submit", (e) => {
   e.preventDefault();
 
+  // 사용자 input 에 '.' 2개 이상 입력 시, 제거.
+  input1.value = input1.value.replace(/\./g, "");
+  input2.value = input2.value.replace(/\./g, "");
+  input3.value = input3.value.replace(/\./g, "");
+
   let combinedQuestion = `${input1.value}. ${input2.value}. ${input3.value}.`;
-  if (input1.value.includes(".")) {
-    combinedQuestion = `${input1.value.replace(".", "")} ${input2.value.replace(
-      ".",
-      ""
-    )} ${input3.value.replace(".", "")}.`;
-  }
 
   input1.value = null;
   input2.value = null;

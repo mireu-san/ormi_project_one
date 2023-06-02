@@ -1,7 +1,26 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
 
+/* 전체 UI 영역 */
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100vh;
+}
+
+li.question {
+  margin-top: 10px;
+}
+
+li.answer {
+  margin-top: 10px;
+}
+
+
+/* 생성 후, 답변에 대한 결과 복사 버튼 */
 .copyButton {
     /* 버튼에 대한 스타일을 정의 */
     display: inline-block;
