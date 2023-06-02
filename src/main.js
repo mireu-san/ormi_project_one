@@ -148,8 +148,12 @@ $form.addEventListener("submit", (e) => {
 
   let combinedQuestion = `${input1.value}. ${input2.value}. ${input3.value}.`;
   if (input1.value.includes(".")) {
-    combinedQuestion = `${input1.value} ${input2.value}. ${input3.value}.`;
+    combinedQuestion = `${input1.value.replace(".", "")} ${input2.value.replace(
+      ".",
+      ""
+    )} ${input3.value.replace(".", "")}.`;
   }
+
   input1.value = null;
   input2.value = null;
   input3.value = null;
