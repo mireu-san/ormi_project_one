@@ -21,16 +21,24 @@ input {
 /* 전송 버튼 */
 #questionnaire {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 3fr 1fr;
   justify-items: center;
   align-items: center;
   gap: 20px;
 }
 
+.submitSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+}
+
 #submitBtn {
-  margin-top: 60px;
+  margin-top: 115px;
   padding: 10px 40px;
-  margin-left: 25px;
   height: 100px;
   background-color: #007bff;
   color: #fff;
@@ -40,6 +48,7 @@ input {
   font-weight: bold;
   font-size: 24px;
 }
+
 
 #submitBtn:hover {
   background-color: #0056b3;

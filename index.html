@@ -31,55 +31,22 @@
 				<input type="text" id="input3" autofocus title="라노벨 질문 3번" placeholder="어느쪽이든요 or 밝은 분위기면 좋겠어요!" />
 				<br />
 			</div>
-			<button type="submit" id="submitBtn" disabled>검색시작</button>
-			<!-- 경고 메세지 -->
-			<p id="buttonMessage" />
+			<div class="submitSection">
+				<button type="submit" id="submitBtn" disabled>검색시작</button>
+				<p id="buttonMessage" />
+			</div>
 			<!-- 질문자의 질문과, chatgpt의 답변이 표시되는 영역 -->
 				<div class="wrapperAnswer">
 					<ul>
 					</ul>
 				</div>
+
+				<script src="./src/modules/questionnaire.js" type="module"></script>
 		</form>
-		
 		<footer>
 			<p>&copy; 2023 mireu-san. God is in his heaven, all is right with the world.</p>
 			<p>면책 : 이 서비스는 2021년 3분기 이후의 내용을 담지 않습니다.</p>
 			<p>일부 발매되지 않고 팬픽으로 나온 소설이 포함 될 수 있습니다.</p>
 		</footer>
-
-		<!-- <div id="loadingGif" class="tenor-gif-embed" data-postid="20798126" data-share-method="host" data-aspect-ratio="1.77778" data-width="100%" style="display: none;">
-			<a href="https://tenor.com/view/genshin-impact-gacha-gif-20798126">Genshin Impact Gacha GIF</a>from <a href="https://tenor.com/search/genshin+impact-gifs">Genshin Impact GIFs</a>
-		</div> 
-		<script type="text/javascript" async src="https://tenor.com/embed.js"></script> -->
-
-		<!-- 모듈화 후보 -->
-		<!-- <script>
-			const form = document.getElementById('questionnaire');
-			const inputs = form.querySelectorAll('input');
-			const submitBtn = document.getElementById('submitBtn');
-			const buttonMessage = document.getElementById('buttonMessage');
-			
-			const checkInputs = () => {
-				let isValid = true;
-				inputs.forEach(input => {
-					if(input.value.trim() === '') isValid = false;
-				});
-				submitBtn.disabled = !isValid;
-				buttonMessage.textContent = isValid ? '' : '모든 칸의 내용을 채워 주셔야 합니다!'
-			}
-			
-			inputs.forEach(input => {
-				input.addEventListener('input', checkInputs);
-			});
-			
-			form.addEventListener('submit', (e) => {
-				checkInputs();
-				if(submitBtn.disabled) {
-					e.preventDefault();
-				}
-			});
-		</script> -->
-		<script src="./src/modules/questionnaire.js" type="module"></script>
-
 	</body>
 </html>
