@@ -34,6 +34,7 @@ input {
   justify-content: center;
   width: 100%;
   text-align: center;
+  margin-left: 48px;
 }
 
 #submitBtn {
