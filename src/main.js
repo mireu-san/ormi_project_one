@@ -103,7 +103,7 @@ const printAnswer = async (answer) => {
   copyButton.classList.add("copyButton");
   copyButton.innerText = "이 답변 내용을 복사합니다.";
   copyButton.addEventListener("click", () => {
-    // 클립보드에 진짜로 해당 답변을 복사
+    // 클립보드에 해당 답변을 복사
     navigator.clipboard
       .writeText(answer)
       .then(() => {
@@ -116,6 +116,14 @@ const printAnswer = async (answer) => {
       });
   });
   $chatList.appendChild(copyButton);
+
+  // URL 링크 추가
+  let link = document.createElement("a");
+  link.href = "https://www.aladin.co.kr";
+  link.textContent = "알라딘 온라인 서점";
+  link.target = "_blank";
+  link.id = "copyButton2";
+  $chatList.appendChild(link);
 };
 
 // 사람에 의해 지정된 답변. (no post request to api)
