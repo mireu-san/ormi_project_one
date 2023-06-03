@@ -166,7 +166,6 @@ button.copyButton:hover {
   background-color: #0056b3;
 }
 
-/* URL 파란색선 삭제 */
 header a {
   text-decoration: none;
   color: inherit;

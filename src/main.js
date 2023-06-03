@@ -18,10 +18,8 @@ fetch("../src/json/auth.json")
   .catch((error) => console.error("Error:", error));
 
 // 사용자의 질문
-// This one works as receiver and display it as confirmed. #2
 let question;
 
-// https://community.openai.com/t/the-system-role-how-it-influences-the-chat-behavior/87353
 // 질문과 답변 저장
 let data = [
   {
