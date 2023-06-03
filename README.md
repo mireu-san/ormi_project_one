@@ -1,4 +1,5 @@
-# 작업중입니다 :)
+# 환영합니다!
+당신은 라이트노벨을 추천하는 문학소녀에게 
 
 ## Prerequisite
 1. npm install -D tailwindcss
