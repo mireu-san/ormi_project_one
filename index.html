@@ -33,12 +33,21 @@
 						<input type="text" id="input2" autofocus title="라노벨 질문 2번" placeholder="없어요 or 늑대와 향신료를 감명깊게 봤어요. 로렌스가 매력이었죠." />
 						<h3>3. 이야기의 분위기는 밝으면 좋겠나요, 어두운 편이 좋나요?</h3>
 						<input type="text" id="input3" autofocus title="라노벨 질문 3번" placeholder="어느쪽이든요 or 밝은 분위기면 좋겠어요!" />
-						<br />
+						<br />					
 					</div>
 					<div class="submitSection">
 						<button type="submit" id="submitBtn" disabled>검색시작</button>
 						<p id="buttonMessage" />
 					</div>
+					<!-- transition -->
+					<div id="loadingSvg" class="loading-svg" style="display: none">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" style="width: 50px; height: 50px">
+							<circle cx="25" cy="25" r="20" stroke="#333" stroke-width="4" fill="none"/>
+							<circle class="loading-svg-circle" cx="25" cy="25" r="20" stroke="#999" stroke-width="4" stroke-dasharray="119" stroke-dashoffset="119" fill="none">
+								<animate attributeName="stroke-dashoffset" values="119;0" dur="1s" repeatCount="indefinite"/>
+							</circle>
+						</svg>
+					</div>	
 					<!-- 질문자의 질문과, chatgpt의 답변이 표시되는 영역 -->
 						<div class="wrapperAnswer">
 							<ul>

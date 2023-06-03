@@ -74,8 +74,6 @@ input {
   font-family: 'Nanum Pen Script', cursive;
 }
 
-
-
 #submitBtn:hover {
   background-color: #0056b3;
 }
@@ -176,5 +174,32 @@ header p {
   text-align: center;
 }
 
+button.resetButton {
+  /* 버튼에 대한 스타일을 정의 */
+  font-family: 'Nanum Pen Script', cursive;
+  margin-top: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 2rem;
+  cursor: pointer;
+}
 
+button.resetButton:hover {
+/* 버튼에 대한 호버 효과 스타일을 정의 */
+background-color: #0056b3;
+}
 
+.fade {
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.fadeIn {
+  opacity: 1;
+}
