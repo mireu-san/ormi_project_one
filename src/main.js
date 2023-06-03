@@ -6,8 +6,16 @@ let input3 = document.getElementById("input3");
 const $chatList = document.querySelector("ul");
 
 // openAI API
-// This is temporary key. Document strongly not recommend to leave it like here.
-let url = `https://estsoft-openai-api.jejucodingcamp.workers.dev/`;
+// 주의 : 보안상 여전히 위험. Vanilla JS라서, .env로 못함.
+let url = "";
+
+fetch("../src/json/auth.json")
+  .then((response) => response.json())
+  .then((data) => {
+    url = data.url;
+  })
+
+  .catch((error) => console.error("Error:", error));
 
 // 사용자의 질문
 // This one works as receiver and display it as confirmed. #2
@@ -115,7 +123,7 @@ const printAnswer = async (answer) => {
 let humanAnsDict;
 
 axios
-  .get("./humanAnsDict.json")
+  .get("../src/json/humanAnsDict.json")
   .then(function (res) {
     humanAnsDict = res.data;
   })
