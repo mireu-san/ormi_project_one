@@ -7,15 +7,7 @@ const $chatList = document.querySelector("ul");
 
 // openAI API
 // 주의 : 보안상 여전히 위험. Vanilla JS라서, .env로 못함.
-let url = "";
-
-fetch("../src/json/auth.json")
-  .then((response) => response.json())
-  .then((data) => {
-    url = data.url;
-  })
-
-  .catch((error) => console.error("Error:", error));
+let url = `https://estsoft-openai-api.jejucodingcamp.workers.dev/`;
 
 // 사용자의 질문
 let question;
