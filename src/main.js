@@ -132,43 +132,23 @@ const printAnswer = async (answer) => {
   $chatList.appendChild(resetButton);
 };
 
-// 사람에 의해 지정된 답변. (no post request to api)
-// json 으로 분리
-let humanAnsDict;
-
-axios
-  .get("../src/json/humanAnsDict.json")
-  .then(function (res) {
-    humanAnsDict = res.data;
-  })
-  .catch(function (err) {
-    console.log(err);
-  });
-
-// humanAnsDict 에 매치되는게 아닐 시,
 // openAI 측 api로 요청보내는 함수
 const apiPost = async () => {
-  const reservedAnswer = humanAnsDict[question];
-
-  if (reservedAnswer) {
-    printAnswer(reservedAnswer);
-  } else {
-    const result = await axios({
-      method: "post",
-      maxBodyLength: Infinity,
-      url: url,
-      headers: {
-        "Content-Type": "application/json",
-      },
-      data: JSON.stringify(data),
-    });
-    try {
-      console.log("apiPost에서 result.data :", result.data);
-      // an order of openAI's priority answer option, lower number means top rated.
-      printAnswer(result.data.choices[0].message.content);
-    } catch (err) {
-      console.log("apiPost 에서 문제 발생. 확인해주세요.", err);
-    }
+  const result = await axios({
+    method: "post",
+    maxBodyLength: Infinity,
+    url: url,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    data: JSON.stringify(data),
+  });
+  try {
+    console.log("apiPost에서 result.data :", result.data);
+    // an order of openAI's priority answer option, lower number means top rated.
+    printAnswer(result.data.choices[0].message.content);
+  } catch (err) {
+    console.log("apiPost 에서 문제 발생. 확인해주세요.", err);
   }
 };
 
