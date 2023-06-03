@@ -1,5 +1,5 @@
 # 환영합니다!
-- 당신은 한 대형 도서관의 문학소녀 견습생에게 이것저것 물어보며 자신의 취향에 맞는 라이트노벨을 찾아보는 것 입니다.
+- 당신은 한 대형 도서관의 문학소녀 견습생에게 이것저것 물어보며 자신의 취향에 맞는 라이트노벨 또는 아니메를 찾아보는 것 입니다.
 
 ##  Known status.
 - To run this repository, run live server extension in vscode.
