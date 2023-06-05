@@ -1,6 +1,10 @@
 # 환영합니다!
 - 당신은 한 대형 도서관의 문학소녀 견습생에게 이것저것 물어보며 자신의 취향에 맞는 라이트노벨 또는 아니메를 찾아보는 것 입니다.
 
+## 작업중인 목록.
+- 이 답변 내용을 복사합니다 버튼의 오작동 문제 점검중입니다.
+
+
 ##  Known status.
 - To run this repository, run live server extension in vscode.
 (Ctrl + Shift + P and 'live server: open with live server')
