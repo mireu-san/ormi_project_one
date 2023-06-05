@@ -1,3 +1,4 @@
+//
 const $form = document.querySelector("form");
 // const $input = document.querySelector("input");
 let input1 = document.getElementById("input1");
