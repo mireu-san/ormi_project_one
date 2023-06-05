@@ -97,7 +97,10 @@ const printAnswer = async (answer) => {
   // style 을 위한 클래스 부여
   copyButton.classList.add("copyButton");
   copyButton.innerText = "이 답변 내용을 복사합니다.";
-  copyButton.addEventListener("click", () => {
+  copyButton.type = "button";
+  copyButton.addEventListener("click", (e) => {
+    e.stopPropagation();
+
     // 클립보드에 해당 답변을 복사
     navigator.clipboard
       .writeText(answer)
