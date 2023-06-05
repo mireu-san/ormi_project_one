@@ -177,8 +177,10 @@ $form.addEventListener("submit", (e) => {
   input2.value = input2.value.replace(/\./g, "");
   input3.value = input3.value.replace(/\./g, "");
 
+  // 모든 입력값을 한 곳으로 합치는 곳. 답변 영역.
   let combinedQuestion = `${input1.value}. ${input2.value}. ${input3.value}.`;
 
+  // submit 후, 입력 값 초기화.
   input1.value = null;
   input2.value = null;
   input3.value = null;
