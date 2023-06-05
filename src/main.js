@@ -1,13 +1,16 @@
-//
+// DOM에서 form 선택
 const $form = document.querySelector("form");
-// const $input = document.querySelector("input");
+
+// input 입력값들을 ID로 DOM에서 획득.
 let input1 = document.getElementById("input1");
 let input2 = document.getElementById("input2");
 let input3 = document.getElementById("input3");
+
+// DOM에서 chat 내역 선택.
 const $chatList = document.querySelector("ul");
 
 // openAI API
-// 주의 : 보안상 위험. Vanilla JS라서, .env로 못함.
+// 주의 : 보안상 위험 (client side Vanilla JS.)
 let url = `https://estsoft-openai-api.jejucodingcamp.workers.dev/`;
 
 // 사용자의 질문
