@@ -98,17 +98,17 @@ const printAnswer = async (answer) => {
 
   // 클립보트로 복사 버튼
   let copyButton = document.createElement("button");
-  // style 을 위한 클래스 부여
   copyButton.classList.add("copyButton");
   copyButton.innerText = "이 답변 내용을 복사합니다.";
   copyButton.type = "button";
+
   copyButton.addEventListener("click", (e) => {
     e.stopPropagation();
-
     // 클립보드에 해당 답변을 복사
     navigator.clipboard
       .writeText(answer)
       .then(() => {
+        copyButton.innerText = "클립보드에 복사되었습니다!";
         console.log(
           "printAnswer -> copyButton, navigator : 클립보드 복사 성공"
         );
