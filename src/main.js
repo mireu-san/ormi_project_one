@@ -139,7 +139,7 @@ const printAnswer = async (answer) => {
   $chatList.appendChild(resetButton);
 };
 
-// openAI 측 api로 요청보내는 함수
+// openAI 측 api (server)로 요청보내는 함수
 const apiPost = async () => {
   const result = await axios({
     method: "post",
@@ -168,7 +168,6 @@ const hideLoadingSvg = () => {
   document.getElementById("loadingSvg").style.display = "none";
 };
 
-// submit - this one works as a submit (전송) button to interact with JS.
 $form.addEventListener("submit", (e) => {
   e.preventDefault();
 
