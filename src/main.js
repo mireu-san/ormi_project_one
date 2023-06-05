@@ -1,13 +1,15 @@
-// DOM에서 form 선택
-const $form = document.querySelector("form");
+// // DOM에서 form 선택
+// const $form = document.querySelector("form");
 
-// input 입력값들을 ID로 DOM에서 획득.
-let input1 = document.getElementById("input1");
-let input2 = document.getElementById("input2");
-let input3 = document.getElementById("input3");
+// // input 입력값들을 ID로 DOM에서 획득.
+// let input1 = document.getElementById("input1");
+// let input2 = document.getElementById("input2");
+// let input3 = document.getElementById("input3");
 
-// DOM에서 chat 내역 선택.
-const $chatList = document.querySelector("ul");
+// // DOM에서 chat 내역 선택.
+// const $chatList = document.querySelector("ul");
+
+import { $form, input1, input2, input3, $chatList } from "./modules/dom.js";
 
 // openAI API
 // 주의 : 보안상 위험 (client side Vanilla JS.)
