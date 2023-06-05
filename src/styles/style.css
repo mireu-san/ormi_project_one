@@ -203,3 +203,7 @@ background-color: #0056b3;
 .fadeIn {
   opacity: 1;
 }
+
+#loadingSvg {
+  display: none;
+}
