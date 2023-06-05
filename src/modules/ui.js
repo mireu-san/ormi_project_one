@@ -21,7 +21,7 @@ export const printQuestion = async ($chatList, questionData, question) => {
 };
 
 // 화면에 답변 그려주는 함수
-export const printAnswer = async ($chatList, answer) => {
+export const printAnswer = async ($chatList, answer, $form) => {
   // 답변 표시
   let li = document.createElement("li");
   // transition effect to highlight the answer.

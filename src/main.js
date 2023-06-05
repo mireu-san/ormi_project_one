@@ -10,7 +10,7 @@ import {
 let question;
 
 // 질문과 답변 저장
-let data = [
+const data = [
   {
     role: "system",
     content:
@@ -30,10 +30,10 @@ data.push(
 );
 
 // 화면에 뿌려줄 데이터, 질문들
-let questionData = [];
+const questionData = [];
 
 // input에 입력된 질문 받아오는 함수 -> 질문글 표시.
-let inputs = document.querySelectorAll("#input1, #input2, #input3");
+const inputs = document.querySelectorAll("#input1, #input2, #input3");
 
 inputs.forEach((input) => {
   input.addEventListener("input", (e) => {
@@ -63,7 +63,7 @@ $form.addEventListener("submit", async (e) => {
   input3.value = input3.value.replace(/\./g, "");
 
   // 모든 입력값을 한 곳으로 합치는 곳. 답변 영역.
-  let combinedQuestion = `${input1.value}. ${input2.value}. ${input3.value}.`;
+  const combinedQuestion = `${input1.value}. ${input2.value}. ${input3.value}.`;
 
   // submit 후, 입력 값 초기화.
   input1.value = null;
@@ -79,8 +79,7 @@ $form.addEventListener("submit", async (e) => {
   try {
     const apiResult = await apiPost(data);
     hideLoadingSvg();
-    // printQuestion($chatList, questionData, combinedQuestion);
-    printAnswer($chatList, apiResult.choices[0].message.content);
+    printAnswer($chatList, apiResult.choices[0].message.content, $form);
   } catch (err) {
     console.log("apiPost 에서 문제 발생. 확인해주세요.", err);
   }
