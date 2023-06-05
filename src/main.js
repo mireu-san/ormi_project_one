@@ -1,22 +1,11 @@
-// // DOM에서 form 선택
-// const $form = document.querySelector("form");
-
-// // input 입력값들을 ID로 DOM에서 획득.
-// let input1 = document.getElementById("input1");
-// let input2 = document.getElementById("input2");
-// let input3 = document.getElementById("input3");
-
-// // DOM에서 chat 내역 선택.
-// const $chatList = document.querySelector("ul");
-
 import { $form, input1, input2, input3, $chatList } from "./modules/dom.js";
-
-// openAI API
-// 주의 : 보안상 위험 (client side Vanilla JS.)
-let url = `https://estsoft-openai-api.jejucodingcamp.workers.dev/`;
-
-// 사용자의 질문
-let question;
+import { apiPost } from "./modules/api.js";
+import {
+  printQuestion,
+  printAnswer,
+  showLoadingSvg,
+  hideLoadingSvg,
+} from "./modules/ui.js";
 
 // 질문과 답변 저장
 let data = [
@@ -63,114 +52,7 @@ const sendQuestion = (question) => {
   }
 };
 
-// 화면에 질문 그려주는 함수
-const printQuestion = async () => {
-  if (question) {
-    let li = document.createElement("li");
-    li.classList.add("question");
-
-    let span = document.createElement("span");
-    span.innerText = "다음의 문장을 기반으로 알아보고 있어요: ";
-    li.appendChild(span);
-
-    questionData.map((el) => {
-      let questionText = document.createElement("span");
-      questionText.innerText = el.content;
-      li.appendChild(questionText);
-    });
-
-    $chatList.appendChild(li);
-    questionData = [];
-    question = false;
-  }
-};
-
-// 화면에 답변 그려주는 함수
-const printAnswer = async (answer) => {
-  // 답변 표시
-  let li = document.createElement("li");
-  // transition effect to highlight the answer.
-  li.classList.add("answer", "fade");
-  li.innerText = answer;
-  $chatList.appendChild(li);
-
-  setTimeout(() => {
-    li.classList.add("fadeIn");
-  }, 500);
-
-  // 클립보트로 복사 버튼
-  let copyButton = document.createElement("button");
-  copyButton.classList.add("copyButton");
-  copyButton.innerText = "이 답변 내용을 복사합니다.";
-  copyButton.type = "button";
-
-  copyButton.addEventListener("click", (e) => {
-    e.stopPropagation();
-    // 클립보드에 해당 답변을 복사
-    navigator.clipboard
-      .writeText(answer)
-      .then(() => {
-        copyButton.innerText = "클립보드에 복사되었습니다!";
-        console.log(
-          "printAnswer -> copyButton, navigator : 클립보드 복사 성공"
-        );
-      })
-      .catch((err) => {
-        console.log("뭔가 잘못되었습니다. printAnswer -> copyButton", err);
-      });
-  });
-  $chatList.appendChild(copyButton);
-
-  // URL 링크 추가
-  let link = document.createElement("a");
-  link.href = "https://www.aladin.co.kr";
-  link.textContent = "알라딘 온라인 서점";
-  link.target = "_blank";
-  link.id = "copyButton2";
-  $chatList.appendChild(link);
-
-  // 새로고침 버튼
-  let resetButton = document.createElement("button");
-  resetButton.setAttribute("type", "button");
-  resetButton.classList.add("resetButton");
-  resetButton.innerText = "Reset";
-  resetButton.addEventListener("click", () => {
-    $form.reset();
-    location.reload();
-  });
-  $chatList.appendChild(resetButton);
-};
-
-// openAI 측 api (server)로 요청보내는 함수
-const apiPost = async () => {
-  const result = await axios({
-    method: "post",
-    maxBodyLength: Infinity,
-    url: url,
-    headers: {
-      "Content-Type": "application/json",
-    },
-    data: JSON.stringify(data),
-  });
-  try {
-    console.log("apiPost에서 result.data :", result.data);
-    // an order of openAI's priority answer option, lower number means top rated.
-    printAnswer(result.data.choices[0].message.content);
-  } catch (err) {
-    console.log("apiPost 에서 문제 발생. 확인해주세요.", err);
-  }
-};
-
-// transition - loading
-const showLoadingSvg = () => {
-  document.getElementById("loadingSvg").style.display = "block";
-};
-
-const hideLoadingSvg = () => {
-  document.getElementById("loadingSvg").style.display = "none";
-};
-
-$form.addEventListener("submit", (e) => {
+$form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   // 사용자 input 에 '.' 2개 이상 입력 시, 제거.
@@ -187,7 +69,17 @@ $form.addEventListener("submit", (e) => {
   input3.value = null;
 
   sendQuestion(combinedQuestion);
+
+  printQuestion($chatList, questionData, combinedQuestion);
+
   showLoadingSvg();
-  apiPost().finally(hideLoadingSvg);
-  printQuestion();
+
+  try {
+    const apiResult = await apiPost(data);
+    hideLoadingSvg();
+    // printQuestion($chatList, questionData, combinedQuestion);
+    printAnswer($chatList, apiResult.choices[0].message.content);
+  } catch (err) {
+    console.log("apiPost 에서 문제 발생. 확인해주세요.", err);
+  }
 });

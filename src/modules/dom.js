@@ -1,3 +1,4 @@
+// DOM
 export const $form = document.querySelector("form");
 export const input1 = document.getElementById("input1");
 export const input2 = document.getElementById("input2");
