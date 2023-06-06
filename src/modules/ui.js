@@ -1,5 +1,7 @@
 // 화면에 질문 그려주는 함수
 export const printQuestion = async ($chatList, questionData, question) => {
+  $chatList.innerHTML = "";
+
   if (question) {
     let li = document.createElement("li");
     li.classList.add("question");
@@ -14,6 +16,7 @@ export const printQuestion = async ($chatList, questionData, question) => {
       li.appendChild(questionText);
     });
 
+    // 답변 표시
     $chatList.appendChild(li);
     questionData = [];
     question = false;
@@ -22,6 +25,7 @@ export const printQuestion = async ($chatList, questionData, question) => {
 
 // 화면에 답변 그려주는 함수
 export const printAnswer = async ($chatList, answer, $form) => {
+  $chatList.innerHTML = "";
   // 답변 표시
   let li = document.createElement("li");
   // transition effect to highlight the answer.
