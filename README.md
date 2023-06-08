@@ -4,6 +4,7 @@
 ## Miscellaneous
 - To run this repository, run live server extension in vscode.
 (Ctrl + Shift + P and 'live server: open with live server')
+- 질문자의 이전 질문을 기반으로 원하는 라노벨의 취향을 분석하고 있습니다. 화면에서는 추가 질문 시, 이전 내용이 사라지고 있으나 이전 질문 내용을 고려해서 답변하게 됩니다.
 ## limitation
 - 2021년 3분기 까지의 내용에 의거해서 답변이 가능합니다.
 - 경우에 따라서는 출판되지 않은 팬픽, 또는 현지 소설을 한글로 번역하는 과정에서 일부 제목의 오역이 있을 수 있습니다.
