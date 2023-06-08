@@ -83,4 +83,7 @@ $form.addEventListener("submit", async (e) => {
   } catch (err) {
     console.log("apiPost 에서 문제 발생. 확인해주세요.", err);
   }
+
+  // submit 이 후, questionData 를 초기화.
+  questionData.length = 0;
 });
