@@ -15,18 +15,15 @@ https://mireu-san.github.io/projectLightNovel/
 
 ## 폴더 구조
 - index.html:
-
 웹 페이지의 기본 레이아웃과 UI 요소를 포함합니다.
 DOM 요소들과 연결되어 있고 사용자 입력을 받을 수 있는 폼이 존재합니다.
 
 - main.js:
-
 애플리케이션의 진입점입니다.
 다른 JavaScript 파일들을 import하고, 사용자 입력을 처리하고, API와의 통신을 담당합니다.
 질문과 답변을 저장하고, 화면에 표시하는 역할을 수행합니다.
 
 - api.js:
-
 API와의 통신을 위한 코드가 포함되어 있습니다.
 axios를 사용하여 API에 POST 요청을 보내고, 결과를 받아옵니다.
 
