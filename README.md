@@ -1,6 +1,9 @@
-# 환영합니다!
+# 환영합니다! Welcome!
 - 당신은 한 대형 도서관의 문학소녀 견습생에게 이것저것 물어보며 자신의 취향에 맞는 라이트노벨 또는 아니메를 찾아보는 것 입니다.
 - This web app uses chatgpt to assist you finding a favourite light novel to anime contents based on your input values. Please contact me via email if you need any inquiry regarding this project in English.
+
+# 비고.
+향후 예정된 개선사항 : (1) 검색 button 의 조건 처리 (2) api 숨김처리. 
 ## Miscellaneous
 - To run this repository, run live server extension in vscode.
 (Ctrl + Shift + P and 'live server: open with live server')
