@@ -6,6 +6,12 @@ const buttonMessage = document.getElementById("buttonMessage");
 // 상태 변화 추적용 (isDirty)
 let buttonClicked = false;
 
+// Set the loading state of the button
+const setLoadingState = (isLoading) => {
+  submitBtn.disabled = isLoading;
+  buttonMessage.textContent = isLoading ? "잠시만 기다려주세요..." : "";
+};
+
 // validation
 const checkInputs = () => {
   // if button clicked, 아무것도 체크하지 않음.
@@ -28,14 +34,22 @@ inputs.forEach((input) => {
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
+  // If the button is in the loading state, prevent further submission
+  if (submitBtn.disabled) return;
+
+
   // if isDirty is true, then checkInputs
   buttonClicked = true;
-  checkInputs();
+  setLoadingState(true);
+  
+  setTimeout(() => {
+    checkInputs();
 
-  if (!submitBtn.disabled) {
-    buttonMessage.textContent = "";
-    inputs.forEach((input) => (input.value = ""));
-  }
+    if (!submitBtn.disabled) {
+      buttonMessage.textContent = "잠시만 기다려주세요...";
+      inputs.forEach((input) => (input.value = ""));
+    }
   // if form submit is done, then reset the status.
   buttonClicked = false;
+  }, 0);
 });
