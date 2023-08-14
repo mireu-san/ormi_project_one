@@ -3,7 +3,7 @@ function signup() {
     const password = document.getElementById('signup-password').value;
 
     // # 추후개선1
-    axios.post('http://127.0.0.1:8000/api/signup/', {
+    axios.post('http://127.0.0.1:8000/users/', {
         username: username,
         password: password
     })
