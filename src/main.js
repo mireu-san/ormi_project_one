@@ -58,6 +58,7 @@ $form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   // 토큰 유효기간 확인
+  console.log("Token check on page load:");
   checkTokenExpiration();
 
   // 사용자 input 에 '.' 2개 이상 입력 시, 제거.

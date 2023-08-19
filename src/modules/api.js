@@ -6,18 +6,29 @@ const url = `http://127.0.0.1:8000/chatbot/api/chat/`;
 
 // data = main.js 의 questionData 와 연계되고 있음.
 export const apiPost = async (data) => {
-  const token = localStorage.getItem('access_token'); // 토큰 가져오는데...뭔가 localStorage 로 가져오는 게 조금 찝찝하다. 추후 점검.
-  const result = await axios({
-    method: "post",
-    maxBodyLength: Infinity,
-    url: url,
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`, // postman 의 경우, header 에 들어가는 것.
-    },
-    data: JSON.stringify(data),
-  });
-  return result.data;
+  const token = localStorage.getItem('access_token');
+  try {
+    const result = await axios({
+      method: "post",
+      maxBodyLength: Infinity,
+      url: url,
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
+      },
+      data: JSON.stringify(data),
+    });
+    return result.data;
+  } catch (error) {
+    if (error.response && error.response.status === 401) {
+      // 토큰 만료로 인한 401 오류 처리
+      console.log("Token has expired. Redirecting to login page...");
+      // 로그인 페이지로 리다이렉트하는 코드
+      window.location.href = "/login.html";
+    } else {
+      throw error;
+    }
+  }
 };
 
 // jwt 토큰 유효기간 체크 함수
@@ -30,6 +41,7 @@ function decodeJWT(token) {
 
   return JSON.parse(jsonPayload);
 };
+
 
 export function checkTokenExpiration() {
   const token = localStorage.getItem('access_token');
