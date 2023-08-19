@@ -31,7 +31,7 @@ function decodeJWT(token) {
   return JSON.parse(jsonPayload);
 };
 
-function checkTokenExpiration() {
+export function checkTokenExpiration() {
   const token = localStorage.getItem('access_token');
   if (!token) {
       console.log("No access_token found in localStorage.");

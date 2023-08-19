@@ -1,5 +1,5 @@
 import { $form, input1, input2, input3, $chatList } from "./modules/dom.js";
-import { apiPost } from "./modules/api.js";
+import { apiPost, checkTokenExpiration } from "./modules/api.js";
 import {
   printQuestion,
   printAnswer,
@@ -56,6 +56,9 @@ const sendQuestion = (question) => {
 
 $form.addEventListener("submit", async (e) => {
   e.preventDefault();
+
+  // 토큰 유효기간 확인
+  checkTokenExpiration();
 
   // 사용자 input 에 '.' 2개 이상 입력 시, 제거.
   input1.value = input1.value.replace(/\./g, "");
