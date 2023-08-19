@@ -78,8 +78,10 @@ $form.addEventListener("submit", async (e) => {
 
   try {
     const apiResult = await apiPost(data);
+    console.log("서버로부터 받은 응답:", apiResult);
     hideLoadingSvg();
-    printAnswer($chatList, apiResult.choices[0].message.content, $form);
+    // printAnswer($chatList, apiResult.choices[0].message.content, $form);
+    printAnswer($chatList, apiResult.response, $form);
   } catch (err) {
     console.log("apiPost 에서 문제 발생. 확인해주세요.", err);
   }
